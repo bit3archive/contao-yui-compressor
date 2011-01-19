@@ -162,11 +162,21 @@ class AbstractYuiCompressor extends AbstractMinimizer implements CssMinimizer
 	
 	/**
 	 * (non-PHPdoc)
-	 * @see Minimizer::minimizeFile($strSource)
+	 * @see Minimizer::minimizeFromFile($strFile)
 	 */
-	public function minimizeFile($strSource)
+	public function minimizeFromFile($strFile)
 	{
-		return $this->executeYui($this->generateCommand(TL_ROOT . '/' . $strSource));
+		return $this->executeYui($this->generateCommand(TL_ROOT . '/' . $strFile));
+	}
+	
+	
+	/**
+	 * (non-PHPdoc)
+	 * @see Minimizer::minimizeToFile($strFile, $strCode)
+	 */
+	public function minimizeToFile($strFile, $strCode)
+	{
+		return $this->executeYui($this->generateCommand('-o', TL_ROOT . '/' . $strFile), $strCode) !== false ? true : false;
 	}
 	
 	
