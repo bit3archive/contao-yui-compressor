@@ -123,9 +123,8 @@ class AbstractYuiCompressor extends AbstractMinimizer implements CssMinimizer
 			$arrPipes);
 		if ($procYUI === false)
 		{
-			$strErr = sprintf("yui compressor could not be started!<br/>\ncmd: %s", $strCmd);
-			$this->log($strErr, get_class($this) . '::executeYui', TL_ERROR);
-			throw new Exception($strErr);
+			$this->log(sprintf("yui compressor could not be started!<br/>\ncmd: %s", $strCmd), get_class($this) . '::executeYui', TL_ERROR);
+			return false;
 		}
 		// write contents
 		if ($strData !== false)
@@ -144,9 +143,8 @@ class AbstractYuiCompressor extends AbstractMinimizer implements CssMinimizer
 		$intCode = proc_close($procYUI);
 		if ($intCode != 0)
 		{
-			$strErr = sprintf("Execution of yui compressor failed!<br/>\ncmd: %s", $strCmd);
-			$this->log($strErr, get_class($this) . '::executeYui', TL_ERROR);
-			throw new Exception($strErr);
+			$this->log(sprintf("Execution of yui compressor failed!<br/>\ncmd: %s<br/>\nstderr: %s", $strCmd, $strErr), get_class($this) . '::executeYui', TL_ERROR);
+			return false;
 		}
 		return $strOut;
 	}
@@ -158,7 +156,7 @@ class AbstractYuiCompressor extends AbstractMinimizer implements CssMinimizer
 	 */
 	public function minimize($strSource, $strTarget)
 	{
-		return $this->executeYui($this->generateCommand('-o', $strTarget, $strSource));
+		return $this->executeYui($this->generateCommand('-o', TL_ROOT . '/' . $strTarget, TL_ROOT . '/' . $strSource));
 	}
 	
 	
@@ -168,8 +166,9 @@ class AbstractYuiCompressor extends AbstractMinimizer implements CssMinimizer
 	 */
 	public function minimizeFile($strSource)
 	{
-		return $this->executeYui($this->generateCommand($strSource));
+		return $this->executeYui($this->generateCommand(TL_ROOT . '/' . $strSource));
 	}
+	
 	
 	/**
 	 * (non-PHPdoc)
