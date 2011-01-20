@@ -129,7 +129,7 @@ class AbstractYuiCompressor extends AbstractMinimizer
 		// write contents
 		if ($strData !== false)
 		{
-			fwrite($arrPipes[0], $strCode);
+			fwrite($arrPipes[0], $strData);
 		}
 		// close stdin
 		fclose($arrPipes[0]);
