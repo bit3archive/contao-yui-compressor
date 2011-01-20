@@ -36,7 +36,7 @@
  * @author     Tristan Lins <tristan.lins@infinitysoft.de>
  * @package    Compression API
  */
-class AbstractYuiCompressor extends AbstractMinimizer implements CssMinimizer
+class AbstractYuiCompressor extends AbstractMinimizer
 {
 	/**
 	 * The current code type.

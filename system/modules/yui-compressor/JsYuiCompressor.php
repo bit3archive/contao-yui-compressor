@@ -29,18 +29,19 @@
  */
 
 /**
- * Class CssYuiCompressor
+ * Class JsYuiCompressor
  *
  * wrapper class for the yui compressor (http://developer.yahoo.com/yui/compressor/)
  * @copyright  InfinitySoft 2011
  * @author     Tristan Lins <tristan.lins@infinitysoft.de>
  * @package    Compression API
  */
-class CssYuiCompressor extends AbstractYuiCompressor implements CssMinimizer
+class JsYuiCompressor extends AbstractYuiCompressor
 {
 	public function __construct()
 	{
-		parent::__construct('css');
+		parent::__construct('js');
 	}
+
 }
 ?>
