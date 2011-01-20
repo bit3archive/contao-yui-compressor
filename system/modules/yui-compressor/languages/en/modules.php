@@ -31,6 +31,6 @@
 /**
  * Back end modules
  */
-$GLOBALS['TL_LANG']['MOD']['minimizer-yui'] = array('Compression API - YUI Compressor', 'YUI Compressor JavaScript and CSS minimizer.');
+$GLOBALS['TL_LANG']['MOD']['yui'] = array('YUI Compressor', 'YUI Compressor JavaScript and CSS minimizer.');
 
 ?>
